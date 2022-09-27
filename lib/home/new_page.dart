@@ -7,7 +7,7 @@ import 'package:redux/redux.dart';
 class NewPage extends StatelessWidget {
    NewPage({Key? key}) : super(key: key);
 
-   final store = Store(reducer, initialState: AppState(6));
+   final store = Store(reducer, initialState: AppState.initialState());
 
 
    @override

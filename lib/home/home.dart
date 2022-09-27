@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final store = Store(reducer, initialState: AppState.initialState());
-    final store = Store(reducer, initialState: AppState(0));
+    final store = Store(reducer, initialState: AppState.initialState());
 
     return StoreProvider(
       store: store,

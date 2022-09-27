@@ -4,7 +4,7 @@ class AppState {
   int get counter => _counter;
   AppState(this._counter);
 
-  // AppState.initialState() : _counter = 0;
+  AppState.initialState() : _counter = 0;
 
   
 }
