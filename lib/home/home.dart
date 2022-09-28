@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:increment_with_redux/home/app_state.dart';
-import 'package:increment_with_redux/home/new_page.dart';
+0import 'package:increment_with_redux/home/new_page.dart';
 import 'package:increment_with_redux/home/reducer.dart';
 import 'package:redux/redux.dart';
 
@@ -42,10 +42,10 @@ class MyHomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  NewPage()),
+                    MaterialPageRoute(builder: (context) => NewPage()),
                   );
                 },
-                child: Text('go to next page'))
+                child: Text('go to next page')),
           ],
         ),
       ),
