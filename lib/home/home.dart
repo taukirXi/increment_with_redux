@@ -9,56 +9,52 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final store = Store(reducer, initialState: AppState.initialState());
-    final store = Store(reducer, initialState: AppState.initialState());
 
-    return StoreProvider(
-      store: store,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('futter demo home page'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('futter demo home page'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            // this way
+            StoreConnector<AppState, int>(
+              converter: (store) => store.state.counter,
+              builder: (_, counter) => Text(
+                '${counter}',
+                style: Theme.of(context).textTheme.headline4,
               ),
-              // this way
-              StoreConnector<AppState, int>(
-                converter: (store) => store.state.counter,
-                builder: (_, counter) => Text(
-                  '${counter}',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-              //other way
-              // StoreConnector<AppState, AppState>(
-              //   converter: (store) => store.state,
-              //   builder: (_, counter) => Text(
-              //     '${counter._counter}',
-              //     style: Theme.of(context).textTheme.headline4,
-              //   ),
-              // ),
+            ),
+            //other way
+            // StoreConnector<AppState, AppState>(
+            //   converter: (store) => store.state,
+            //   builder: (_, counter) => Text(
+            //     '${counter._counter}',
+            //     style: Theme.of(context).textTheme.headline4,
+            //   ),
+            // ),
 
-              FlatButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) =>  NewPage()),
-                    );
-                  },
-                  child: Text('go to next page'))
-            ],
-          ),
+            FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  NewPage()),
+                  );
+                },
+                child: Text('go to next page'))
+          ],
         ),
-        floatingActionButton: StoreConnector<AppState, VoidCallback>(
-          converter: (store) => () => store.dispatch(Increment.increment),
-          builder: (_, callback) => FloatingActionButton(
-            onPressed: callback,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
+      ),
+      floatingActionButton: StoreConnector<AppState, VoidCallback>(
+        converter: (store) => () => store.dispatch(Increment.increment),
+        builder: (_, callback) => FloatingActionButton(
+          onPressed: callback,
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
         ),
       ),
     );
